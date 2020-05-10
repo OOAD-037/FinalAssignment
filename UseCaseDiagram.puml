@@ -1,0 +1,29 @@
+@startuml ElectronicCommerceSystemofLOOPFashionShop
+left to right  direction
+skinparam linetype ortho
+:User: as user
+:Admin: as admin
+
+' (Login) as login
+' (Register) as register
+rectangle eCommerce{
+    user -- (login)
+    user -- (register)
+    user -- (viewStore)
+    user -- (viewOrders)
+    user -- (manageProfile)
+    user -- (checkoutOrder)
+    (checkoutOrder) --|> (makePayment) : uses
+    ' user -- (informPayment)
+    ' (makePayment)<|--(onlinePayment)
+    ' (makePayment)<|--(transferPayment)
+    ' (onlinePayment)--|>(Paysbuy) : uses
+    (login) -- admin
+    (register) -- admin
+    (manageProfile) -- admin
+    (manageStore) -- admin
+    (manageOrder) -- admin
+    (viewReport) -- admin
+}
+
+@enduml
