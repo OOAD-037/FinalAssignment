@@ -1,4 +1,4 @@
-@startuml ElectronicCommerceSystemofLOOPFashionShop
+@startuml useCaseDiagramElectronicCommerceSystemofLOOPFashionShop
 left to right  direction
 skinparam linetype ortho
 :User: as user
