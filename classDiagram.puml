@@ -1,0 +1,68 @@
+@startuml classDiagram
+skinparam linetype ortho
+
+class Member{
+    - userId
+    - email
+    - password
+    + login()
+    + register()
+    + updateProfile()
+}
+
+class Customer{
+    - customerName
+    - tel
+    - address
+}
+
+class Admin{
+    - adminName
+    + manageProduct()
+    + manageOrder()
+    + approveOrder()
+    + report()
+}
+
+class Order{
+    - orderId
+    - date
+    - price
+    - userId
+    - customerName
+    - status
+    - Shippingaddress
+    + updateOrder()
+    + placeOrder()
+    + cancelOrder()
+    + makePayment()
+    + informPayment()
+}
+
+class OrderDetail{
+    - odId
+    - orderId
+    - productId
+    - quantity
+}
+
+class Product{
+    - productId
+    - productName
+    - productDetail
+    - images
+    - price
+    + viewProduct()
+    + addToOrder()
+}
+
+Member<|--Customer
+Member<|--Admin
+Customer"1"*--"0..n"Order
+Order"1"*--"1"OrderDetail
+OrderDetail"1"*--"1..n"Product
+' Customer --> Product : View
+' Admin --> Product : Manage
+' Admin --> Order : Manage
+
+@enduml
