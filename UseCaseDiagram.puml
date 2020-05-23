@@ -1,29 +1,28 @@
-@startuml useCaseDiagramElectronicCommerceSystemofLOOPFashionShop
+@startuml useCaseDiagram
 left to right  direction
 skinparam linetype ortho
-:User: as user
-:Admin: as admin
+:ผู้ใช้: as user
+:ผู้ดูแลระบบ: as admin
 
-' (Login) as login
-' (Register) as register
-rectangle eCommerce{
-    user -- (login)
-    user -- (register)
-    user -- (viewStore)
-    user -- (viewOrders)
-    user -- (manageProfile)
-    user -- (checkoutOrder)
-    (checkoutOrder) --|> (makePayment) : uses
-    ' user -- (informPayment)
-    ' (makePayment)<|--(onlinePayment)
-    ' (makePayment)<|--(transferPayment)
-    ' (onlinePayment)--|>(Paysbuy) : uses
-    (login) -- admin
-    (register) -- admin
-    (manageProfile) -- admin
-    (manageStore) -- admin
-    (manageOrder) -- admin
-    (viewReport) -- admin
+rectangle "Electronic Commerce System of LOOP Fashion Shop"{
+    user -- (สมัครสมาชิก)
+    user -- (เข้าสู่ระบบ)
+    user -- (สั่งซื้อสินค้า)
+    user -- (ชำระเงิน)
+    user -- (แจ้งโอน)
+    (สั่งซื้อสินค้า)..>(เข้าสู่ระบบ) : include
+    (ชำระเงิน)..>(เข้าสู่ระบบ) : include
+    (แจ้งโอน)..>(เข้าสู่ระบบ) : include
+    (ชำระเงิน)<..(Paysbuy) : extend
+    (สมัครสมาชิก) -- admin
+    (เข้าสู่ระบบ) -- admin
+    (จัดการข้อมูลหลัก) -- admin
+    (อนุมัติการสั่งซื้อ) -- admin
+    (แจ้งโอน)-- admin
+    (ออกรายงาน) -- admin
+    (จัดการข้อมูลหลัก)..>(เข้าสู่ระบบ) : include
+    (อนุมัติการสั่งซื้อ)..>(เข้าสู่ระบบ) : include
+    (ออกรายงาน)..>(เข้าสู่ระบบ) : include
 }
 
 @enduml
