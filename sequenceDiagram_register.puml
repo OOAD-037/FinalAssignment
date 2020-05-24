@@ -1,0 +1,12 @@
+@startuml sequenceDiagram_register
+participant ":User" as user
+participant ":Registration Page" as regist
+participant ":Database" as db
+participant ":Main Page" as main
+
+user->regist : Register(input)
+regist->regist : VerifyInput()
+regist->db : [Valid Input] AddNewUser()
+regist->main : [Valid Input] Redirection
+regist->user : [Non Valid Input] DisplayError() 
+@enduml

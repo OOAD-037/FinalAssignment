@@ -1,0 +1,12 @@
+@startuml sequenceDiagram_login
+participant ":User" as user
+participant ":Login Page" as login
+participant ":Database" as db
+participant ":Main Page" as main
+
+user->login : Login(username,password)
+login->db : retrieveUser()
+db->login : retrievingStatus
+login->main : [Exist] Redirection
+login->user : [Non Exist] DisplayError() 
+@enduml
