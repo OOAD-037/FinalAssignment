@@ -58,8 +58,8 @@ Member<|--Admin
 Customer"1" *-- "0..n"Order
 Order"1" *-- "1"OrderDetail
 OrderDetail"1" *-- "1..n"Product
-Customer --> Product : View
-Admin --> Product : Manage
-Admin --> Order : Manage
+Customer"1" --> "0..n"Product : View
+Admin"1" --> "0..n"Product : Manage
+Admin"1" --> "0..n"Order : Manage
 
 @enduml
