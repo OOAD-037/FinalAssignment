@@ -1,0 +1,14 @@
+@startuml stateDiagram_payment
+[*]->Authorization : /login()
+Authorization->Authorization : Login Failed
+Authorization-->makePayment : Logged In
+Authorization : entry/login()
+makePayment : no orderNo?/enter orderNo
+makePayment : do/waiting for selected choice
+makePayment-->informPayment : Direct transfer selected
+informPayment : do/waiting for slip uploaded
+makePayment-->Paysbuy : Credit or Debit Card selected
+Paysbuy : entry/redirect to Paysbuy gateway
+informPayment-->[*] : Informed Slip
+Paysbuy-->[*] : Payment Success
+@enduml

@@ -1,0 +1,10 @@
+@startuml stateDiagram_order
+[*]->Authorization : /login()
+Authorization->Authorization : Login Failed
+Authorization-->checkOut : Logged In
+Authorization : entry/login()
+checkOut : do/waiting for button pressed.
+checkOut-->placeOrder : checkOut button clicked/placeOrder()
+placeOrder->[*] : orderPlaced
+
+@enduml
