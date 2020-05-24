@@ -18,8 +18,6 @@ class Customer{
 
 class Admin{
     - adminName
-    + manageProduct()
-    + manageOrder()
     + approveOrder()
     + report()
 }
@@ -52,17 +50,16 @@ class Product{
     - productDetail
     - images
     - price
-    + viewProduct()
     + addToOrder()
 }
 
 Member<|--Customer
 Member<|--Admin
-Customer"1"*--"0..n"Order
-Order"1"*--"1"OrderDetail
-OrderDetail"1"*--"1..n"Product
-' Customer --> Product : View
-' Admin --> Product : Manage
-' Admin --> Order : Manage
+Customer"1" o-- "0..n"Order
+Order"1" o-- "1"OrderDetail
+OrderDetail"1" o-- "1..n"Product
+Customer --> Product : View
+Admin --> Product : Manage
+Admin --> Order : Manage
 
 @enduml
